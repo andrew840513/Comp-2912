@@ -1,0 +1,40 @@
+<html>
+<head>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <title><%= title %></title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="order.js"></script>
+</head>
+<body>
+    <form name="input" action="/confirmation" method="post" onsubmit="if(!validateForm(this)) event.preventDefault();">
+        <h1>Order</h1>
+        <p>Pizza size</p>
+        <% for(var size in pizzaData.size){%>
+            <input type="radio" name="size" value="<%=size%>" required ><%=pizzaData.size[size].text%> $<%=pizzaData.size[size].price%><br>
+        <%}%>
+        <p>Pizza crust</p>
+        <% for(var crust in pizzaData.crust){%>
+            <input type="radio" name="crust" value="<%=crust%>" required><%=pizzaData.crust[crust].text%> <% if(pizzaData.crust[crust].price !=0){%>+$<%=pizzaData.crust[crust].price%><%}%><br>
+        <%}%>
+        <p>Pizza toppings</p>
+        <select id="topping" onchange="append()">
+            <option value="default">Select topping</option>
+            <% for(var topping in pizzaData.topping){%>
+                <option value="<%=topping%>"><%=pizzaData.topping[topping].text%> +$1.00</option>
+            <%}%>
+        </select>
+        <div id="topping_data"></div>
+        <div id="topping_added"></div>
+        <p>Quantity</p>
+        <input type="number" name="quantity" value="1" min="1">
+        <br><br>
+        First name: <input type="text" name="firstname" placeholder="John" required><br/>
+        Last name: <input type="text" name="lastname" placeholder="Smith" required><br/>
+        Address: <br><input type="text" name="address" placeholder="1234 Street City, ST Zip" required>
+        <p>Comments:</br></p>
+        <textarea name="comment" ></textarea>
+        <p></p>
+        <input type="submit" id="submit" value="Submit" href="#" onclick="setTopping()">
+    </form>
+</body>
+</html>

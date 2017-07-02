@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="order.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h1>Confirmation</h1>
+            <p class="col-md-4 row">Fist Name: </p><%=order["firstname"]%><br>
+            <p class="col-md-4 row">Last Name: </p><%=order["lastname"]%><br>
+            <p class="col-md-4 row">Address: </p><%=order["address"]%><br>
+            <p class="col-md-4 row">Quantity: </p><%=order["quantity"]%><br>
+            <p class="col-md-6 row">Pizza Size: </p>
+            <%if(order["size"] > 100){%>
+                <span class="col-md-5"><%=pizzaData.size[order["size"]].text%></span>
+                <span class="col-md-1">$<%=pizzaData.size[order["size"]].price%></span>
+            <%}%> <br>
+            <p class="col-md-6 row">Pizza Crust: </p>
+            <%if(order["crust"] > 200) {%>
+                <span class="col-md-5"><%=pizzaData.crust[order["crust"]].text%></span>
+                <span class="col-md-1">$<%=pizzaData.crust[order["crust"]].price%></span>
+            <%}%><br>
+            <p class="col-md-6 row">Pizza Toppings: </p>
+            <%if(!(order["topping"] > 300)){%>
+                <%for(ID in order["topping"]) {%>
+                <span class="col-md-6"></span><span class="col-md-5 confirm_topping>"><%=pizzaData.topping[order["topping"][ID]].text%></span>
+                </span><span class="col-md-1 confirm_topping>">$<%=pizzaData.topping[order["topping"][ID]].price%></span>
+                <%}%>
+            <%}else{%>
+                <span class="col-md-5 confirm_topping>"><%=pizzaData.topping[order["topping"]].text%></span>
+                <span class="col-md-1 confirm_topping>">$<%=pizzaData.topping[order["topping"]].price%></span>
+            <%}%>
+            <br>
+            <p class="col-md-12 row">Comment: </p><span class="col-md-12"><%=order["comment"]%></span><br>
+            <hr class="col-md-12">
+            <p class="col-md-11">Sub Total</p><span class="col-md-1">$<%=price-tax%></span>
+            <p class="col-md-11">GST 5%</p><span class="col-md-1">$<%=tax%></span>
+            <p class="col-md-11 row">Total:</p><span class="col-md-1">$<%=price%></span>
+            <form>
+                <div class="col-md-12 row" id="btn">
+                    <input type="hidden" name="JSON" value="<%=JSON.stringify(order)%>">
+                    <input class="btn btn-primary" type="button" value="Confirme" onclick="conformation()">
+                    <input type="button" value="Cancel" class="btn btn-danger" onclick="window.location.replace('/')">
+                </div>
+            </form>
+            
+        </div>
+        
+    </body>
+</html>
