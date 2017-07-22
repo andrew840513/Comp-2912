@@ -11,3 +11,13 @@ Final/diagnostic.data/metrics.interim
 Final/journal/WiredTigerLog.0000000001
 
 Final/journal/WiredTigerPreplog.0000000001
+
+Final/journal/WiredTigerPreplog.0000000002
+
+Final/mongod.lock
+
+Final/storage.bson
+
+Final/WiredTiger.lock
+
+Final/WiredTiger.turtle
