@@ -1,13 +1,22 @@
 <html>
+
 <head>
     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
-    <title><%= title %></title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="/javascripts/jquery.cookie.js"></script>
+    <title>
+        <%= title %>
+    </title>
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/cookie.js"></script>
     <script src="/javascripts/index.js"></script>
 </head>
+
 <body>
-    <form name="input" id="submitOrder">
+    <nav>
+        <a href="/">Order</a>
+        <a href="/list">Order List</a>
+    </nav>
+
+    <form name="input" id="submitOrder" onsubmit="ready()">
         <h1>Order</h1>
         <p>Pizza size</p>
         <div id="size"></div>
@@ -21,14 +30,20 @@
         <div id="topping_added"></div>
         <p>Quantity</p>
         <input type="number" name="quantity" value="1" min="1">
-        <br><br>
-        First name: <input type="text" name="firstname" placeholder="John" ><br/>
-        Last name: <input type="text" name="lastname" placeholder="Smith" ><br/>
-        Address: <br><input type="text" name="address" placeholder="1234 Street City, ST Zip" >
-        <p>Comments:</br></p>
-        <textarea name="comment" ></textarea>
+        <br/><br/> First name:
+        <input type="text" name="firstname" placeholder="John" required>
+        <br/> Last name:
+        <input type="text" name="lastname" placeholder="Smith" required>
+        <br/> Address:<br>
+        <input type="text" name="address" placeholder="1234 Street City, ST Zip" required>
+        <br> Phone number <br>
+        <input type="tel" name="phone" placeholder="(604) 123-4567" required>
+        <p>Comments:</br>
+        </p>
+        <textarea name="comment"></textarea>
         <p></p>
-        <input type="button" id="submit" value="Submit" onclick="ready()">
+        <input type="submit" id="submit" value="Submit">
     </form>
 </body>
+
 </html>

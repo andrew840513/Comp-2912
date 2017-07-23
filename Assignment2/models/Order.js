@@ -1,5 +1,5 @@
-module.exports = class Order{
-    constructor(body){
+module.exports = class Order {
+    constructor(body) {
         this.size = body.size;
         this.crust = body.crust;
         this.topping = body.topping;
@@ -7,6 +7,7 @@ module.exports = class Order{
         this.firstname = body.firstname;
         this.lastname = body.lastname;
         this.address = body.address;
+        this.phone = body.phone;
         this.comment = body.comment;
     }
 }
